@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Todo app</title>
+  </head>
+  <body class="p-5 bg-blue-200 flex justify-center items-center h-screen">
+    <div class="w-full max-w-xl">
+      <div
+        class="bg-white w-full rounded-md flex gap-4 overflow-hidden border-2 border-purple-400"
+      >
+        <input
+          type="text"
+          id="todo-text"
+          class="w-full p-4 outline-none"
+          placeholder="Type Title ..."
+        />
+        <button onclick="handleSubmit()" title="Add Todo">
+          <i class="fa-solid fa-square-plus text-[30px] text-purple-400"></i>
+        </button>
+        <button onclick="clearAll()" title="Clear All" class="mr-4">
+          <i class="fa-solid fa-square-minus text-[30px] text-red-400"></i>
+        </button>
+      </div>
+      <div class="bg-white mt-4 rounded-md border-2 border-purple-400 p-4">
+        <ul id="todo-list" class="grid divide-y"></ul>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
