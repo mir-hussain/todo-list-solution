@@ -13,9 +13,10 @@ const render = () => {
   if (todos) {
     todos?.forEach((item) => {
       const li = document.createElement("li");
-      li.classList.add("py-2");
+      li.classList.add("py-2", "flex", "justify-between");
 
-      li.innerText = item.title;
+      li.innerHTML = `<p>${item.title}</p> 
+      <button onclick="handleDelete('${item.id}')" class="bg-red-400 px-2 py-1 rounded-md" >Del</button>`;
 
       ul.appendChild(li);
     });
@@ -34,9 +35,12 @@ const handleSubmit = () => {
 
   const todoText = getElement("todo-text").value;
 
+  const id = Math.random().toString(36).slice(2);
+
   if (!todos && todoText) {
     const todoList = [
       {
+        id,
         title: todoText,
         completed: false,
       },
@@ -47,6 +51,7 @@ const handleSubmit = () => {
     const todoList = [
       ...todos,
       {
+        id,
         title: todoText,
         completed: false,
       },
@@ -61,6 +66,17 @@ const handleSubmit = () => {
 const clearAll = () => {
   localStorage.removeItem("TODOS");
 
+  render();
+};
+
+const handleDelete = (id) => {
+  console.log(id);
+  const todos = JSON.parse(localStorage.getItem("TODOS"));
+
+  const remainingTodos = todos.filter((item) => item.id != id);
+  console.log(remainingTodos);
+
+  localStorage.setItem("TODOS", JSON.stringify(remainingTodos));
   render();
 };
 
