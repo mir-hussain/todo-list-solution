@@ -76,7 +76,12 @@ const handleDelete = (id) => {
   const remainingTodos = todos.filter((item) => item.id != id);
   console.log(remainingTodos);
 
-  localStorage.setItem("TODOS", JSON.stringify(remainingTodos));
+  if (remainingTodos.length) {
+    localStorage.setItem("TODOS", JSON.stringify(remainingTodos));
+  } else {
+    localStorage.removeItem("TODOS");
+  }
+
   render();
 };
 
